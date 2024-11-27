@@ -1,0 +1,142 @@
+/*----------------------------------------------------------------
+- Anpassungen für die URL-Bar
+----------------------------------------------------------------*/
+
+/* Zentrierte URL-Bar */
+#urlbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: var(--urlbar-height) !important;
+}
+
+/* Notwendige Icons in der URL-Bar */
+#identity-box,
+#urlbar-input-container,
+#urlbar-go-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-inline: 6px !important; /* Anpassbarer Abstand */
+}
+
+/* Überflüssige Icons entfernen */
+#tracking-protection-icon-container,
+#translation-button,
+#userContext-icons,
+#urlbar-zoom-button {
+  display: none !important;
+}
+
+/* Buttons in der URL-Bar einblenden */
+#identity-box,
+#page-action-buttons,
+#tracking-protection-icon-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin-inline: 6px !important;
+  opacity: 1 !important;
+}
+
+/* Effekt beim Hover */
+#urlbar:hover #identity-box,
+#urlbar:hover #page-action-buttons,
+#urlbar:hover #tracking-protection-icon-container {
+  transition: opacity 100ms ease-in-out !important;
+}
+
+/* Abstand und Ausrichtung des Such-Icons */
+#urlbar-go-button {
+  margin-inline-start: 10px !important; /* Mehr Abstand nach rechts */
+  justify-content: center !important;
+}
+
+/* URL-Bar zentrierter Text */
+#urlbar-input-container {
+  flex-grow: 1 !important;
+  text-align: center !important;
+  padding-inline: 10px !important;
+}
+
+/* Hintergrund und Ränder für die URL-Bar */
+#urlbar-background {
+  background: var(--arrowpanel-background) !important;
+  border-radius: 8px !important;
+  padding-inline: 6px !important;
+  box-shadow: var(--uc-urlbar-shadow, none);
+}
+
+/* Zentrierte URL-Bar-Icons */
+.urlbar-page-action > .toolbarbutton-icon,
+#identity-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+}
+
+/* Entferne unnötige Placeholder und optimierte Darstellung */
+#urlbar-input::placeholder {
+  opacity: 0.6 !important;
+}
+#urlbar[open] > .urlbarView > .urlbarView-body-outer > .urlbarView-body-inner {
+  border-top: 0 !important;
+}
+
+/* Optimierung für Vorschlagscontainer */
+.urlbarView {
+  margin-top: 2px !important;
+  width: 100% !important;
+  border-radius: 0 0 8px 8px !important;
+}
+
+/* Such-Icon und Vorschläge optimieren */
+.search-go-button {
+  padding: 0 !important;
+  margin-inline-start: 10px !important; /* Verschiebt das Such-Icon nach rechts */
+  display: flex !important;
+  align-items: center !important;
+}
+
+/*----------------------------------------------------------------
+- Custom Icon für Sidebar-Autohide (ultima.tabs.autohide)
+----------------------------------------------------------------*/
+
+/* Custom Icon hinzufügen */
+#custom-sidebar-toggle {
+  list-style-image: url("icons/arrow.svg") !important; /* Pfad zu deinem Icon */
+  -moz-image-region: auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  cursor: pointer;
+  margin-inline: 5px !important; /* Abstand zu anderen Icons */
+  filter: grayscale(50%); /* Optional: Effekt für Deaktivierung */
+}
+#custom-sidebar-toggle:hover {
+  filter: none; /* Effekt entfernen bei Hover */
+}
+
+/*----------------------------------------------------------------
+- Debugging: ultima.urlbar.centered aktivieren
+----------------------------------------------------------------*/
+@media (-moz-bool-pref: "ultima.urlbar.centered") {
+  #urlbar .urlbar-input-box {
+    text-align: center !important;
+  }
+}
+
+/*----------------------------------------------------------------
+- Buttons einblenden für ultima.urlbar.hidebuttons
+----------------------------------------------------------------*/
+@media (-moz-bool-pref: "ultima.urlbar.hidebuttons") {
+  #urlbar #identity-box,
+  #urlbar #page-action-buttons,
+  #urlbar #tracking-protection-icon-container {
+    opacity: 0 !important;
+  }
+  #urlbar:hover #identity-box,
+  #urlbar:hover #page-action-buttons,
+  #urlbar:hover #tracking-protection-icon-container {
+    opacity: 1 !important;
+    transition: opacity 100ms ease !important;
+  }
+}
